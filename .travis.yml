@@ -8,4 +8,4 @@ before_install:
     - docker build -t amr/docker-react -f Dockerfile.dev .
 # contins all commands that will be excuted for the test
 script:
-    - docker run amr/docker-react npm run test -- --coverage
+    - docker run -e CI=true amr/docker-react npm run test -- --coverage
