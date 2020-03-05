@@ -1,0 +1,11 @@
+# hi travis, we need sudo user to run this build
+sudo: required
+# tell travis we need docker cli preinstalled
+services:
+    - docker
+# series of commands that will be excuted before deployer or our test 
+before_install:
+    - docker build -t amr/docker-react -f Dockerfile.dev .
+# contins all commands that will be excuted for the test
+script:
+    - docker run amr/docker-react npm run test -- --coverage
